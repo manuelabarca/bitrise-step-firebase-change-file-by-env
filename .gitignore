@@ -1,5 +1,4 @@
 .bitrise*
 .gows.user.yml
 _tmp/firebase_env
-_tmp/ios/MyRealFood
-_tmp/android/app
+.DS_Store
