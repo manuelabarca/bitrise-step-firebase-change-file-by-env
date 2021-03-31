@@ -1,0 +1,93 @@
+title: |-
+  Firebase Change File by environment
+summary: |
+  Change file change firebase file according to branch
+description: |
+  Change file between firebase project according to branch in your repository
+  * Important Suggestion *: You must create a folder in the root of your project called 'firebase_env'
+   and inside have two folders for production and development, the step suggests in its variables
+   and the corresponding folders.
+website: https://github.com/manuelabarca/bitrise-step-firebase-change-file-by-env
+source_code_url: https://github.com/manuelabarca/bitrise-step-firebase-change-file-by-env
+support_url: https://github.com/manuelabarca/bitrise-step-firebase-change-file-by-env/issues
+host_os_tags:
+  - osx-10.10
+  - ubuntu-16.04
+project_type_tags:
+  - ios
+  - android
+  - react-native
+
+type_tags:
+  - utility
+
+inputs:
+  - principal_branch: master
+    opts:
+      is_required: true
+      title: "Principal branch for production"
+      description: |
+       Branch usually used for the production environment like 'master' or 'main'
+
+  - platform: both
+    opts:
+      is_required: true
+      title: "Platform to use"
+      description: |
+        Choose the platform where you want to use: ios, android or both
+      is_expand: true
+      value_options:
+        - both
+        - ios
+        - android
+    
+  - workdir_android: $BITRISE_SOURCE_DIR/android/
+    opts:
+      title: "Working directory for android platform"
+      description: |
+        Working Directory of the step, default is for react-native project
+
+  - workdir_ios: $BITRISE_SOURCE_DIR/ios/
+    opts:
+      title: "Working directory for ios platform"
+      description: |
+        Working Directory of the step, default is for react-native project 
+  
+  - ios_scheme_name: $BITRISE_SCHEME
+    opts: 
+      title: "Scheme name"
+      description: |
+        Scheme used, usually the name of your app on iOS like 'Example or MyApp'
+      is_required: true
+
+  - android_module: app
+    opts:
+        title: "Module name"
+        description:
+          Module name, It is usually the app folder inside the android folder
+        is_required: true        
+
+  - google_services_file_android_prod: firebase_env/production/google-services.json
+    opts:
+      title: "Google services file for android production"
+      description: |
+       Suggested folder and file for android production
+
+  - google_services_file_ios_prod: firebase_env/production/GoogleService-Info.plist
+    opts:
+      title: "Google services file for iOS production"
+      description: |
+       Suggested folder and file for iOS production
+
+  - google_services_file_android_dev: firebase_env/develop/google-services.json
+    opts:
+      title: "Google services file for android development"
+      description: |
+       Suggested folder and file for android development
+
+  - google_services_file_ios_dev: firebase_env/develop/GoogleService-Info.plist
+    opts: 
+      title: "Google services file for iOS development"
+      description: |
+        Suggested folder and file for iOS development
+  
