@@ -39,20 +39,20 @@ if [ "${platform}" == "both" ]; then
 
     if [  "$BITRISE_GIT_BRANCH" == "${principal_branch}" ]; then
     printf "\n Switching to Firebase Production environment \n"
-    cp -rf "${google_services_file_android_prod}" "${workdir_android}${android_module}"
+    cp -rf "${google_services_file_android_prod}" "${workdir_android}${android_folder}"
     printf "\n Android config file copied \n"
     cp -rf "${google_services_file_ios_prod}" "${workdir_ios}${ios_scheme_name}"
     printf "\n IOS config file copied"
     else
     printf "\n Switching to Firebase Dev environment \n"
-    cp -rf "${google_services_file_android_dev}" "${workdir_android}${android_module}"
+    cp -rf "${google_services_file_android_dev}" "${workdir_android}${android_folder}"
     printf "\n Android config file copied \n"
     cp -rf "${google_services_file_ios_dev}" "${workdir_ios}${ios_scheme_name}"
     printf "\n IOS config file copied"
     fi
 fi
 
-if [ "${platform}" == "ios" ]; then
+if [ "${platform}" == "iOS" ]; then
 
     if [ -z "${google_services_file_ios_prod}" ] ; then
         finalcleanup "Input: \`Google services file ios prod\` not provided!"
@@ -75,7 +75,7 @@ if [ "${platform}" == "ios" ]; then
     fi
 fi
 
-if [ "${platform}" == "android" ]; then
+if [ "${platform}" == "Android" ]; then
 
     if [ -z "${google_services_file_android_prod}" ] ; then
         finalcleanup "Input: \`Google services file android prod\` not provided!"
@@ -89,11 +89,11 @@ if [ "${platform}" == "android" ]; then
 
     if [  "$BITRISE_GIT_BRANCH" == "${principal_branch}" ]; then
     printf "\n Switching to Firebase Production environment \n"
-    cp -rf "${google_services_file_android_prod}" "${workdir_android}${android_module}"
+    cp -rf "${google_services_file_android_prod}" "${workdir_android}${android_folder}"
     printf "\n Android config file copied"
     else
     printf "\n Switching to Firebase Dev environment \n"
-    cp -rf "${google_services_file_android_dev}" "${workdir_android}${android_module}"
+    cp -rf "${google_services_file_android_dev}" "${workdir_android}${android_folder}"
     printf "\n Android config file copied"
     fi
 fi

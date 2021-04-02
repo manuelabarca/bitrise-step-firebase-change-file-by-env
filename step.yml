@@ -1,9 +1,11 @@
 title: |-
-  Firebase Change File by environment
+  Firebase Change File by environment and branch
 summary: |
-  Change file change firebase file according to branch
+  Utility to be able to differentiate your firebase projects by development environment
 description: |
-  Change file between firebase project according to branch in your repository
+  Change the firebase connection file according to the development branch that you are using,
+  usually one has two environments such as develop or production which should not consume
+  the same firebase project, this step will help us to switch between firebase projects according to our environment developmental
   * Important Suggestion *: You must create a folder in the root of your project called 'firebase_env'
    and inside have two folders for production and development, the step suggests in its variables
    and the corresponding folders.
@@ -17,6 +19,7 @@ project_type_tags:
   - ios
   - android
   - react-native
+  - flutter
 
 type_tags:
   - utility
@@ -27,32 +30,32 @@ inputs:
       is_required: true
       title: "Principal branch for production"
       description: |
-       Branch usually used for the production environment like 'master' or 'main'
+       Branch usually needed for the production environment like 'master' or 'main'
 
   - platform: both
     opts:
       is_required: true
       title: "Platform to use"
       description: |
-        Choose the platform where you want to use: ios, android or both
+        Choose the platform where you want to use: iOS, Android or both
       is_expand: true
       value_options:
         - both
-        - ios
-        - android
+        - iOS
+        - Android
     
   - workdir_android: $BITRISE_SOURCE_DIR/android/
     opts:
-      title: "Working directory for android platform"
+      title: "Working directory for Android platform"
       description: |
-        Working Directory of the step, default is for react-native project
+        Working Directory of the step, default is for react-native or flutter project
 
   - workdir_ios: $BITRISE_SOURCE_DIR/ios/
     opts:
       title: "Working directory for ios platform"
       description: |
-        Working Directory of the step, default is for react-native project 
-  
+        Working Directory of the step, default is for react-native or flutter project
+
   - ios_scheme_name: $BITRISE_SCHEME
     opts: 
       title: "Scheme name"
@@ -60,11 +63,11 @@ inputs:
         Scheme used, usually the name of your app on iOS like 'Example or MyApp'
       is_required: true
 
-  - android_module: app
+  - android_folder: app
     opts:
-        title: "Module name"
-        description:
-          Module name, It is usually the app folder inside the android folder
+        title: "Android App Folder"
+        description: |
+          Folder where src folder is located in android project, in flutter or react native projects it is called app and it is found inside the android folder
         is_required: true        
 
   - google_services_file_android_prod: firebase_env/production/google-services.json
